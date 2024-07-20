@@ -1,15 +1,53 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+import java.util.*;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+public class Main {
+    private static final List<Integer> nums = new ArrayList<>(List.of(1, 1, 2, 3, 4, 4, 5, 5, 6, 7));
+    private static final List<String> word = new ArrayList<>(List.of("adf", "aaa","ivan", "two", "aaa", "ivan"));
+    private static final List<String> strings = new ArrayList<>(List.of("один", "два","два", "три", "три", "три"));
+
+    public static void main(String[] args) {
+        task1();
+        System.out.println();
+        task2();
+        System.out.println();
+        task3();
+        System.out.println();
+        task4();
+
+    }
+
+    public static void task1() {
+        for (int num : nums) {
+            if (num % 2 != 0) {
+                System.out.println(num);
+            }
         }
+    }
+    public static void task2() {
+        Collections.sort(nums);
+        int prevNum = Integer.MIN_VALUE;
+        for (int num : nums) {
+            if (num % 2 == 0 && num != prevNum) {
+                System.out.println(num);
+                prevNum = num;
+            }
+        }
+    }
+
+    public static void task3() {
+        Set<String> uniqueWords = new HashSet<>(word);
+        System.out.println(uniqueWords);
+    }
+
+    public static void task4() {
+        Map<String, Integer> strings1 = new HashMap<>();
+        for (String string : strings) {
+            if (!strings1.containsKey(string)) {
+                strings1.put(string, 1);
+            } else {
+                strings1.put(string, strings1.get(string) + 1);
+            }
+        }
+        System.out.println(strings1);
     }
 }
